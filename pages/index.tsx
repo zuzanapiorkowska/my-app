@@ -5,6 +5,7 @@ import { Header } from "../components/Header/Header";
 import { Results } from "../components/Results/Results";
 
 function HomePage() {
+    const [query, setQuery] = useState<string>("")
   const [dataToDisplay, setDataToDisplay] = useState<
     Array<IRepository | IUser>
   >([
@@ -50,16 +51,17 @@ function HomePage() {
     }
   ]);
 
-  async function getGitHubUserData(
-    query: string
+  async function getGitHubUserData(query: string
   ): Promise<Array<IRepository | IUser>> {
-    const response = await axios.get(`https://www.github.com/${query}`);
+    const response = await axios.get(`http://localhost:3000/api/search?search="${query}"`);
+    console.log(response);
     const githubData: Array<IRepository | IUser> = response.data;
     return githubData;
   }
 
-  async function handleChange(e: string): Promise<void> {
-    const data = (await getGitHubUserData(e)) as Array<IRepository>;
+  async function handleChange(query: string): Promise<void> {
+      console.log(query);
+    const data = (await getGitHubUserData(query)) as Array<IRepository>;
     setDataToDisplay(data);
   }
 

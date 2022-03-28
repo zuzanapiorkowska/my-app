@@ -9,7 +9,7 @@ export function Header(props: HeaderProps) {
   return (
     <div className="header">
       <Logo />
-      <SearchInput onChange={() => props.onChange(e)} />
+      <SearchInput onChange={(e) => props.onChange(e)} />
     </div>
   );
 }
