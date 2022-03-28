@@ -1,5 +1,5 @@
 interface SearchInputProps {
-onChange(e): void;
+onChange(e: any): void;
 }
 
 

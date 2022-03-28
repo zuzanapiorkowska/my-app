@@ -1,4 +1,4 @@
-interface SearchResultProps {
+interface RepositoryProps {
   name: string;
   description: string;
   observers: number;
@@ -7,7 +7,7 @@ interface SearchResultProps {
   lastUpdate: string;
 }
 
-export function SearchResult(props: SearchResultProps) {
+export function Repository(props: RepositoryProps) {
   return (
     <>
       <h1>{props.name}</h1>

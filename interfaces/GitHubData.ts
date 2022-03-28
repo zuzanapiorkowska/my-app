@@ -1,4 +1,4 @@
-export interface Repository {
+export interface IRepository {
     name: string;
     description: string;
     observers: number;
@@ -7,7 +7,7 @@ export interface Repository {
     lastUpdate: string;
 }
 
-export interface User {
+export interface IUser {
     name: string;
     avatarUrl: string;
     description: string;
