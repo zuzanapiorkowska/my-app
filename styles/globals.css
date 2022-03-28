@@ -43,8 +43,10 @@
 }
 
 .result {
-  margin-top: 2rem;
   display: flex;
+  border-bottom: 1px solid lightgray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .search-result {
@@ -69,14 +71,15 @@
   font-size: 0.9rem;
 }
 
-.result__userName {
+.result__user-name {
   margin-top: -0.6rem;
+  margin-bottom: 0.8rem;
   color: grey;
   font-size: 0.9rem;
 }
 
 .result-bottom {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   display: flex;
   align-items: center;
   color: grey;
@@ -90,7 +93,17 @@
   height: 0.9rem;
 }
 
+.result__main-language {
+  margin-right: 1rem;
+}
+
 .star-img {
   width: 1rem;
   margin-right: 0.2rem;
+}
+
+.result__about-me {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--darkgrey);
 }

@@ -1,7 +1,7 @@
 interface RepositoryProps {
   name: string;
   description: string;
-  observers: number;
+  stars: number;
   colorOfMainLanguage: string;
   mainLanguage: string;
   lastUpdate: string;
@@ -16,7 +16,7 @@ export function Repository(props: RepositoryProps) {
       <p className="result__description">{props.description}</p>
       <div className="result-bottom">
         <img className="star-img" src="/star.png"></img>
-      <p className="result__observers">{props.observers}</p>
+      <p className="result__observers">{props.stars}</p>
       <div className="result__color-of-main-language" style={{backgroundColor: props.colorOfMainLanguage}}></div>
       <span className="result__main-language">{props.mainLanguage}</span>
       <span className="result__last-update">Updated on: {props.lastUpdate}</span>

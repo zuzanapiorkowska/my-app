@@ -13,12 +13,9 @@ export function User(props: UserProps) {
       <div>
       <div className="user-data">
       <h1 className="result__name">{props.name}</h1>
-      <p className="result__userName">{props.userName}</p>
-      <div className="result-bottom">
-      <img className="star-img" src="/star.png"></img>
-      <p className="result_about-me">{props.description}</p>
-      <p className="result__place">{props.place}</p>
-      </div>
+      <p className="result__user-name">{props.userName}</p>
+      <p className="result__about-me">{props.description}</p>
+      <p className="result-bottom">{props.place}</p>
       </div>
       </div>
     </div>

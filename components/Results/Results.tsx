@@ -4,18 +4,18 @@ import { ResultsNumber } from "./ResultsNumber";
 import { User } from "./Result/User";
 
 interface ResultsProps {
-    dataToDisplay: Array<IRepository | IUser>
+    dataToDisplay: Array<IRepository | IUser>;
 }
 
 export function Results(props:ResultsProps) {
     return <div className="results">
          <ResultsNumber resultsnumber={props.dataToDisplay.length}/>
       {props.dataToDisplay.map((result) => {
-        if ("observers" in result) {
+        if ("stars" in result) {
           return <Repository
             name={result.name}
             description={result.description}
-            observers={result.observers}
+            stars={result.stars}
             colorOfMainLanguage={result.colorOfMainLanguage}
             mainLanguage={result.mainLanguage}
             lastUpdate={result.lastUpdate}
