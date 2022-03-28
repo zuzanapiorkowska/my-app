@@ -9,8 +9,21 @@
 // - When you press on a user, new screen should be presented. Display username, avatar and number of followers for selected user.
 // - When you press on a repository nothing should happen
 
+import { SearchInput } from "../components/SearchInput"
+import { ResultList} from "../components/ResultList"
+
+
 function HomePage() {
+
+    function handleChange():void {
+        console.log("change");
+    }
+
+    
     return <>
-    <SearchInput></SearchInput>
+    <SearchInput/>
+    <ResultList onChange={()=>handleChange()} />
     </>
 }
+
+export default HomePage;
