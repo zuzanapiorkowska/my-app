@@ -53,7 +53,7 @@ function HomePage() {
 
   async function getGitHubUserData(query: string
   ): Promise<Array<IRepository | IUser>> {
-    const response = await axios.get(`http://localhost:3000/api/search?search="${query}"`);
+    const response = await axios.get(`http://localhost:3000/api/search?search=${query}`);
     console.log(response);
     const githubData: Array<IRepository | IUser> = response.data;
     return githubData;

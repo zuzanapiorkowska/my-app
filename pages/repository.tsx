@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { Header } from "../components/Header/Header";
 import { UserProfile } from "../components/Profiles/UserProfile";
 import { IUserPresentation } from "../interfaces/GitHubData";
 
 function RepositoryPage() {
 
-  const [dataToDisplay, setDataToDisplay] = useState<IUserPresentation>({
+  const [dataToDisplay, setDataToDisplay] = useState<IRepositoryPresentation>({
     name: "Zuza Napiórkowska",
     userName: "string;",
     avatarUrl: "dd",

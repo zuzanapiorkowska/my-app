@@ -23,3 +23,9 @@ export interface IUserPresentation {
   following: number;
   stars: number;
 }
+export interface IRepositoryPresentation {
+  name: string;
+  followers: number;
+  following: number;
+  stars: number;
+}
