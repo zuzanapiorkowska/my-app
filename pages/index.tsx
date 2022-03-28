@@ -16,6 +16,7 @@ import { useState } from "react";
 import { IRepository, IUser } from "../interfaces/GitHubData";
 import { User } from "../components/User";
 import { Header } from "../components/Header";
+import { ResultsNumber } from "../components/ResultsNumber";
 
 function HomePage() {
   const [dataToDisplay, setDataToDisplay] = useState<
@@ -62,6 +63,7 @@ function HomePage() {
   return (
     <>
       <Header onChange={(e) => handleChange(e)} />
+      <ResultsNumber resultsnumber={dataToDisplay.length}/>
       {dataToDisplay.map((result) => {
         if ("observers" in result) {
           return <Repository
