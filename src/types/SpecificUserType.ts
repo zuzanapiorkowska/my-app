@@ -20,10 +20,10 @@ export interface SpecificUserType {
   name: string;
   company: null;
   blog: string;
-  location: null;
-  email: null;
-  hireable: null;
-  bio: null;
+  location: string | null;
+  email: string | null;
+  hireable: boolean;
+  bio: string | null;
   twitter_username: null;
   public_repos: number;
   public_gists: number;

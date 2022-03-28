@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { useAmp } from "next/amp";
+import { useState } from "react";
 import { Repository, User } from "../../interfaces/ResultInterFace";
 import { RepositoryType1 } from "../../src/types/RepositoryType1";
 import { SpecificUserType } from "../../src/types/SpecificUserType";
 import { UserType } from "../../src/types/UserType";
-import { UserTypeAll } from "../../src/types/UserTypeAll";
+
 const axios = require("axios").default;
 
 let token = process.env.MY_TOKEN;
@@ -59,15 +60,28 @@ export const getMoreUserData = async (usersArr: UserType[]) => {
     let accurateRespData = (await accurateUserData.data) as SpecificUserType;
     newArr.push(accurateRespData);
   }
-
   return newArr;
+};
+
+export const mapUserDataToMatchFrontInterface = async (
+  usersArr: SpecificUserType[]
+) => {
+  return usersArr.map((user) => {
+    return {
+      name: user.name,
+      avatarUrl: user.avatar_url,
+      description: user.bio,
+      place: user.location,
+    } as User;
+  });
 };
 
 const getData = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const repositories = await getProperRepos(req);
   const generalUserData = await getGeneralUser(req);
   const allUserData = await getMoreUserData(generalUserData);
+  const users = await mapUserDataToMatchFrontInterface(allUserData);
 
-  res.status(200).json(allUserData);
+  res.status(200).json([...repositories, ...users]);
 };
 export default getData;
