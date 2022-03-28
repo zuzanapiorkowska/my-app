@@ -1,3 +1,4 @@
+import { Logo } from "./Logo";
 import { SearchInput } from "./SearchInput";
 
 interface HeaderProps {
@@ -5,9 +6,9 @@ interface HeaderProps {
 }
 
 export function Header(props: HeaderProps) {
-    return <>
+    return <div className="header">
     <Logo />
     <SearchInput onChange={()=>props.onChange(e)} />
-    </>
+    </div>
 }
 
