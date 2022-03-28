@@ -1,8 +1,8 @@
 interface SearchInputProps {
-onChange(): void;
+onChange(e): void;
 }
 
 
-export function SearchInput(props) {
-    return <input type="text" onChange={props.handleOnChange}></input>
+export function SearchInput(props: SearchInputProps) {
+    return <input type="text" onChange={props.onChange}></input>
 }

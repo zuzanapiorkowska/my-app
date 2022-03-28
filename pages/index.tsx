@@ -10,19 +10,45 @@
 // - When you press on a repository nothing should happen
 
 import { SearchInput } from "../components/SearchInput"
-import { ResultList} from "../components/ResultList"
+import { SearchResult} from "../components/SearchResult"
+import axios from "axios";
+import { GitHubData } from "../interfaces/GitHubData";
+import { useState } from "react";
+import { SearchResults } from "../interfaces/SearchResults";
 
 
 function HomePage() {
+    const [dataToDisplay, setDataToDisplay] = useState([{
+        name: "",
+        description: "",
+        observers: 0,
+        mainLanguage: "",        
+        colorOfMainLanguagE: "",
+        lastUpdate: ""
+    }
+    ]);
 
-    function handleChange():void {
-        console.log("change");
+    async function getGitHubUserData(query:string): Promise<Array<GitHubData>>{
+        const response = await axios.get(`https://www.github.com/${query}`);
+        const githubData: Array<GitHubData> = response.data;
+        return githubData;
     }
 
+    async function handleChange(e: string):Promise<void> {
+        const data = await getGitHubUserData(e);
+        setDataToDisplay(data);
+    }
     
     return <>
-    <SearchInput/>
-    <ResultList onChange={()=>handleChange()} />
+    <SearchInput onChange={(e)=>handleChange(e)}/>
+    dataToDisplay.forEach((result), () =>
+    return <SearchResult 
+    name={dataToDisplay.name}
+    description={dataToDisplay.description} 
+    observers={dataToDisplay.observers}
+    colorOfMainLanguagE={dataToDisplay.colorOfMainLanguagE}
+    mainLanguage={dataToDisplay.colorOfMainLanguage}
+    lastUpdate={dataToDisplay.lastUpdate} />
     </>
 }
 
