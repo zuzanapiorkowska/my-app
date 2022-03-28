@@ -1,4 +1,4 @@
-export interface UserType {
+export interface UserTypeAll {
   login: string;
   id: number;
   node_id: string;
@@ -17,5 +17,18 @@ export interface UserType {
   received_events_url: string;
   type: string;
   site_admin: boolean;
-  score: number;
+  name: string;
+  company: null;
+  blog: string;
+  location: string;
+  email: null;
+  hireable: null;
+  bio: null;
+  twitter_username: null;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
+  created_at: Date;
+  updated_at: Date;
 }
