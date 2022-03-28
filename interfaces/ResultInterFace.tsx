@@ -1,15 +1,25 @@
-export interface Repository {
+export interface IRepository {
     name: string;
     description: string;
-    observers: number;
+    stars: number;
     colorOfMainLanguage: string;
     mainLanguage: string;
     lastUpdate: string;
 }
 
-export interface User {
+export interface IUser {
     name: string;
+    userName: string;
     avatarUrl: string;
     description: string;
     place: string;
+}
+
+export interface IUserPresentation {
+    name: string;
+    userName: string;
+    avatarUrl: string;
+    followers: number;
+    following: number;
+    stars: number;
 }
