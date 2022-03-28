@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { useAmp } from "next/amp";
 import { Repository, User } from "../../interfaces/ResultInterFace";
-import { RepositoryType } from "../../src/types/RepositoryType";
+import { RepositoryType1 } from "../../src/types/RepositoryType1";
+import { SpecificUserType } from "../../src/types/SpecificUserType";
 import { UserType } from "../../src/types/UserType";
 import { UserTypeAll } from "../../src/types/UserTypeAll";
 const axios = require("axios").default;
@@ -17,7 +18,7 @@ export const getProperRepos = async (req: NextApiRequest) => {
       },
     }
   );
-  const dataRepos = (await repositories.data.items) as RepositoryType[];
+  const dataRepos = (await repositories.data.items) as RepositoryType1[];
   const properRepos = dataRepos.map((dataRepo) => {
     return {
       name: dataRepo.name,
@@ -55,7 +56,7 @@ export const getMoreUserData = async (usersArr: UserType[]) => {
         },
       }
     );
-    let accurateRespData = (await accurateUserData.data) as UserTypeAll;
+    let accurateRespData = (await accurateUserData.data) as SpecificUserType;
     newArr.push(accurateRespData);
   }
 

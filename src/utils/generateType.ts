@@ -4,11 +4,12 @@ import {
   quicktype,
 } from "quicktype-core";
 import fs from "fs";
+const axios = require("axios").default;
+let token = process.env.MY_TOKEN;
 
 export const generateTypes = async (url: string, name: string) => {
   const response = await fetch(url);
   const jsonString = await response.text();
-
   const jsonInput = jsonInputForTargetLanguage("typescript");
   await jsonInput.addSource({ name, samples: [jsonString] });
   const inputData = new InputData();
