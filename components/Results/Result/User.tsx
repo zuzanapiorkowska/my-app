@@ -1,3 +1,5 @@
+import  Router from "next/router";
+
 interface UserProps {
   name: string;
   userName: string;
@@ -8,7 +10,7 @@ interface UserProps {
 
 export function User(props: UserProps) {
   return (
-    <div className="result">
+    <div className="result" onClick={()=> Router.push(`/users/${props.userName}`)}>
       <img className="result__avatar" src={props.avatarUrl}></img>
       <div>
       <div className="user-data">

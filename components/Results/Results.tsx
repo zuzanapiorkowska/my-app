@@ -8,6 +8,45 @@ interface ResultsProps {
 }
 
 export function Results(props:ResultsProps) {
+
+  function setColor(language:string): string {
+    switch (language) {
+      case "TypeScript":
+        return "blue"
+        break;
+      case "JavaScript ":
+        return "yellow"
+        break;
+      case "Java":
+        return "orange"
+        break;
+      case "html" || "HTML":
+        return "cyan"
+        break;
+      case "Ruby":
+        return "red"
+        break;
+      case "C#":
+        return "olive"
+        break;
+      case "C++":
+        return "violet"
+        break;
+      case "Assembly":
+        return "brown"
+        break;
+      case "Jupiter Notebook":
+        return "lightblue"
+        break;
+      case "Command Lisp":
+        return "pink"
+        break;
+      default:
+        return "black"
+        break;
+    }
+
+  }
     return <div className="results">
          <ResultsNumber resultsnumber={props.dataToDisplay.length}/>
       {props.dataToDisplay.map((result, idx) => {
@@ -16,7 +55,7 @@ export function Results(props:ResultsProps) {
             name={result.name}
             description={result.description}
             stars={result.stars}
-            colorOfMainLanguage={result.colorOfMainLanguage}
+            color={setColor(result.mainLanguage)}
             mainLanguage={result.mainLanguage}
             lastUpdate={result.lastUpdate}
             key={idx}
