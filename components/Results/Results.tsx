@@ -10,7 +10,7 @@ interface ResultsProps {
 export function Results(props:ResultsProps) {
     return <div className="results">
          <ResultsNumber resultsnumber={props.dataToDisplay.length}/>
-      {props.dataToDisplay.map((result) => {
+      {props.dataToDisplay.map((result, idx) => {
         if ("stars" in result) {
           return <Repository
             name={result.name}
@@ -19,6 +19,7 @@ export function Results(props:ResultsProps) {
             colorOfMainLanguage={result.colorOfMainLanguage}
             mainLanguage={result.mainLanguage}
             lastUpdate={result.lastUpdate}
+            key={idx}
           />;
         } else {
           return <User
@@ -27,6 +28,7 @@ export function Results(props:ResultsProps) {
             avatarUrl={result.avatarUrl}
             description={result.description}
             place={result.place}
+            key={idx}
           />;
         }
       })}

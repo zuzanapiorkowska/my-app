@@ -1,4 +1,6 @@
 import { Header } from "../components/Header/Header";
+import { UserProfile } from "../components/Profiles/UserProfile";
+import { IUserPresentation } from "../interfaces/GitHubData";
 
 function RepositoryPage() {
 
