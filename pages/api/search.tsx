@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { useAmp } from "next/amp";
 import { useState } from "react";
-import { Repository, User } from "../../interfaces/ResultInterFace";
+import { IRepository, IUser } from "../../interfaces/ResultInterFace";
 import { RepositoryType1 } from "../../src/types/RepositoryType1";
 import { SpecificUserType } from "../../src/types/SpecificUserType";
 import { UserType } from "../../src/types/UserType";
@@ -25,9 +25,9 @@ export const getProperRepos = async (req: NextApiRequest) => {
       name: dataRepo.name,
       description: dataRepo.description,
       mainLanguage: dataRepo.language,
-      observers: dataRepo.stargazers_count,
       lastUpdate: dataRepo.updated_at,
-    } as Repository;
+      stars: dataRepo.stargazers_count,
+    } as IRepository;
   });
   return properRepos;
 };
@@ -72,7 +72,7 @@ export const mapUserDataToMatchFrontInterface = async (
       avatarUrl: user.avatar_url,
       description: user.bio,
       place: user.location,
-    } as User;
+    } as IUser;
   });
 };
 

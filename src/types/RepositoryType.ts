@@ -46,7 +46,7 @@ export interface RepositoryType {
   releases_url: string;
   deployments_url: string;
   created_at: Date;
-  updated_at: String;
+  updated_at: string;
   pushed_at: Date;
   git_url: string;
   ssh_url: string;
