@@ -23,6 +23,7 @@ export function Results(props:ResultsProps) {
         } else {
           return <User
             name={result.name}
+            userName={result.userName}
             avatarUrl={result.avatarUrl}
             description={result.description}
             place={result.place}

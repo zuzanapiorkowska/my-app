@@ -47,16 +47,13 @@
   display: flex;
 }
 
-.user-main {
-
-}
-
 .search-result {
   font-weight: bolder;
 }
 
 .result__name {
   margin: 0.5rem 0;
+  margin-bottom: 0.8rem;
   color: rgb(52, 137, 235);
   font-size: 1rem;
 }
@@ -68,6 +65,12 @@
 }
 
 .result__description {
+  color: grey;
+  font-size: 0.9rem;
+}
+
+.result__userName {
+  margin-top: -0.6rem;
   color: grey;
   font-size: 0.9rem;
 }

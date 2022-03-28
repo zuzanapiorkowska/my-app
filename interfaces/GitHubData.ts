@@ -9,6 +9,7 @@ export interface IRepository {
 
 export interface IUser {
     name: string;
+    userName: string;
     avatarUrl: string;
     description: string;
     place: string;
