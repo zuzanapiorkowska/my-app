@@ -12,43 +12,50 @@
 import { SearchInput } from "../components/SearchInput"
 import { SearchResult} from "../components/SearchResult"
 import axios from "axios";
-import { GitHubData } from "../interfaces/GitHubData";
+import { Repository } from "../interfaces/GitHubData";
 import { useState } from "react";
-import { SearchResults } from "../interfaces/SearchResults";
 
 
 function HomePage() {
-    const [dataToDisplay, setDataToDisplay] = useState([{
-        name: "",
-        description: "",
+    const [dataToDisplay, setDataToDisplay] = useState<Array<Repository>>([{
+        name: "Repo1",
+        description: "umi Reacta troszku",
         observers: 0,
-        mainLanguage: "",        
-        colorOfMainLanguagE: "",
-        lastUpdate: ""
+        colorOfMainLanguage: "blue",
+        mainLanguage: "typescript",        
+        lastUpdate: "dzisiej"
+    },
+    {
+        name: "Repo2",
+        description: "umi Reacta troszku",
+        observers: 0,
+        colorOfMainLanguage: "blue",
+        mainLanguage: "typescript",        
+        lastUpdate: "dzisiej"
     }
     ]);
 
-    async function getGitHubUserData(query:string): Promise<Array<GitHubData>>{
+    async function getGitHubUserData(query:string): Promise<Array<Repository>>{
         const response = await axios.get(`https://www.github.com/${query}`);
-        const githubData: Array<GitHubData> = response.data;
+        const githubData: Array<Repository> = response.data;
         return githubData;
     }
 
     async function handleChange(e: string):Promise<void> {
-        const data = await getGitHubUserData(e);
+        const data = await getGitHubUserData(e) as Array<Repository>;
         setDataToDisplay(data);
     }
     
     return <>
     <SearchInput onChange={(e)=>handleChange(e)}/>
-    dataToDisplay.forEach((result), () =>
-    return <SearchResult 
-    name={dataToDisplay.name}
-    description={dataToDisplay.description} 
-    observers={dataToDisplay.observers}
-    colorOfMainLanguagE={dataToDisplay.colorOfMainLanguagE}
-    mainLanguage={dataToDisplay.colorOfMainLanguage}
-    lastUpdate={dataToDisplay.lastUpdate} />
+    {dataToDisplay.map((result, idx) => <SearchResult 
+    name={dataToDisplay[idx].name}
+    description={dataToDisplay[idx].description} 
+    observers={dataToDisplay[idx].observers}
+    colorOfMainLanguage={dataToDisplay[idx].colorOfMainLanguage}
+    mainLanguage={dataToDisplay[idx].mainLanguage}
+    lastUpdate={dataToDisplay[idx].lastUpdate} />
+    )}
     </>
 }
 

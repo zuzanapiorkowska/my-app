@@ -1,8 +1,15 @@
-export interface GitHubData {
+export interface Repository {
     name: string;
     description: string;
     observers: number;
-    mainLanguage: string;
     colorOfMainLanguage: string;
+    mainLanguage: string;
     lastUpdate: string;
+}
+
+export interface User {
+    name: string;
+    avatarUrl: string;
+    description: string;
+    place: string;
 }

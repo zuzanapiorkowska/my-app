@@ -1,11 +1,9 @@
-import { redirect } from "next/dist/server/api-utils";
-
 interface SearchResultProps {
   name: string;
   description: string;
   observers: number;
+  colorOfMainLanguage: string;
   mainLanguage: string;
-  colorOfMainLanguagE: string;
   lastUpdate: string;
 }
 
@@ -15,7 +13,7 @@ export function SearchResult(props: SearchResultProps) {
       <h1>{props.name}</h1>
       <p>{props.description}</p>
       <p>{props.observers}</p>
-      <div style={{backgroundColor: "red", width:10, height:10}}></div>
+      <div style={{backgroundColor: props.colorOfMainLanguage, width: 20, height: 20}}></div>
       <span>{props.mainLanguage}</span>
       <span>Updated on: {props.lastUpdate}</span>
     </>
