@@ -3,5 +3,5 @@ interface ResultsNumberProps {
 }
 
 export function ResultsNumber(props:ResultsNumberProps) {
-    return <p>{props.resultsnumber} results</p>
+    return <p className="search-result">{props.resultsnumber} results</p>
 }

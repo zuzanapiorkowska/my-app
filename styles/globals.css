@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -11,11 +12,12 @@
 .search-input {
   margin-right: 1rem;
   padding: 0.5rem;
+  width: 12rem;
   background-color: var(--darkgrey);
   color: var(--almostwhite);
   border: 1px solid var(--almostwhite);
   border-radius: 0.2rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .search-input::placeholder {
@@ -32,5 +34,60 @@
 
 .logo {
   margin-left: 1rem;
-  height: 3rem;
+  height: 3.3rem;
+}
+
+.results {
+  margin-left: 8rem;
+  margin-top: 1.5rem;
+}
+
+.result {
+  margin-top: 2rem;
+  display: flex;
+}
+
+.user-main {
+
+}
+
+.search-result {
+  font-weight: bolder;
+}
+
+.result__name {
+  margin: 0.5rem 0;
+  color: rgb(52, 137, 235);
+  font-size: 1rem;
+}
+
+.result__avatar {
+  margin-top: 0.4rem;
+  margin-right: 0.3rem;
+  height: 1.5rem;
+}
+
+.result__description {
+  color: grey;
+  font-size: 0.9rem;
+}
+
+.result-bottom {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  color: grey;
+  font-size: 0.7rem;
+}
+
+.result__color-of-main-language {
+  border-radius: 50%;
+  margin: 0 1rem;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.star-img {
+  width: 1rem;
+  margin-right: 0.2rem;
 }
