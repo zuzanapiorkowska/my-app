@@ -1,16 +1,109 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --darkgrey: rgb(36, 41, 47, 1);
+  --almostwhite: rgb(255, 255, 255, 0.9);
+}
+
+.search-input {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  width: 12rem;
+  background-color: var(--darkgrey);
+  color: var(--almostwhite);
+  border: 1px solid var(--almostwhite);
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.search-input::placeholder {
+  color: var(--almostwhite);
+}
+
+.header {
+  background-color: var(--darkgrey);
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin-left: 1rem;
+  height: 3.3rem;
+}
+
+.results {
+  margin-left: 8rem;
+  margin-top: 1.5rem;
+}
+
+.result {
+  display: flex;
+  border-bottom: 1px solid lightgray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.search-result {
+  font-weight: bolder;
+}
+
+.result__name {
+  margin: 0.5rem 0;
+  margin-bottom: 0.8rem;
+  color: rgb(52, 137, 235);
+  font-size: 1rem;
+}
+
+.result__avatar {
+  margin-top: 0.4rem;
+  margin-right: 0.3rem;
+  height: 1.5rem;
+}
+
+.result__description {
+  color: grey;
+  font-size: 0.9rem;
+}
+
+.result__user-name {
+  margin-top: -0.6rem;
+  margin-bottom: 0.8rem;
+  color: grey;
+  font-size: 0.9rem;
+}
+
+.result-bottom {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  color: grey;
+  font-size: 0.7rem;
+}
+
+.result__color-of-main-language {
+  border-radius: 50%;
+  margin: 0 1rem;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.result__main-language {
+  margin-right: 1rem;
+}
+
+.star-img {
+  width: 1rem;
+  margin-right: 0.2rem;
+}
+
+.result__about-me {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--darkgrey);
 }
