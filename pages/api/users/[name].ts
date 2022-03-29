@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { SpecificUserType } from "../../../src/types/SpecificUserType";
 import { IRepository, IUser } from "../../../interfaces/ResultInterFace";
+import { IUserPresentation } from "../../../interfaces/GitHubData";
 
 const axios = require("axios").default;
 
@@ -13,9 +14,11 @@ export const mapUserDataToMatchFrontInterface = async (
     name: user.name,
     userName: user.login,
     avatarUrl: user.avatar_url,
-    description: user.bio,
+    followers: user.followers,
+    following: user.following,
+    // stars: user.sr
     place: user.location,
-  } as IUser;
+  } as IUserPresentation;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

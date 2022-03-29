@@ -20,5 +20,5 @@ export interface IUserPresentation {
     avatarUrl: string;
     followers: number;
     following: number;
-    stars: number;
+    // stars: number;
 }
