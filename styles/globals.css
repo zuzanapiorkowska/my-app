@@ -38,8 +38,9 @@
 }
 
 .results {
-  margin-left: 8rem;
+  margin-left: 7rem;
   margin-top: 1.5rem;
+  margin-right: 8rem;
 }
 
 .result {
@@ -47,10 +48,19 @@
   border-bottom: 1px solid lightgray;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.result:hover {
+  background-color: rgb(224, 224, 224);
+  cursor: pointer;
 }
 
 .search-result {
   font-weight: bolder;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid lightgray;
 }
 
 .result__name {
@@ -58,6 +68,10 @@
   margin-bottom: 0.8rem;
   color: rgb(52, 137, 235);
   font-size: 1rem;
+}
+
+.result__name:hover {
+  text-decoration: underline;
 }
 
 .result__avatar {
@@ -71,6 +85,9 @@
   color: grey;
   font-size: 0.9rem;
 }
+.result__description:hover {
+  text-decoration: underline;
+}
 
 .result__user-name {
   margin-top: -0.6rem;
@@ -79,12 +96,24 @@
   font-size: 0.9rem;
 }
 
+.result__user-name:hover {
+  text-decoration: underline;
+}
+
 .result-bottom {
   margin-top: 0.6rem;
   display: flex;
   align-items: center;
   color: grey;
   font-size: 0.7rem;
+}
+
+.result__about-me:hover{
+  text-decoration: underline;
+}
+
+.result__observers:hover {
+  text-decoration: underline;
 }
 
 .result__color-of-main-language {
@@ -96,6 +125,14 @@
 
 .result__main-language {
   margin-right: 1rem;
+}
+
+.result__last-update:hover {
+  text-decoration: underline;
+}
+
+.result__main-language:hover {
+  text-decoration: underline;
 }
 
 .star-img {
@@ -140,4 +177,17 @@
 
 .user__followers {
   margin-right: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .results {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .user__avatar {
+    width: 20rem;
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+  }
 }

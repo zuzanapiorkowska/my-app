@@ -38,7 +38,7 @@ function UserPage() {
   };
 
   return (
-    <>t
+    <>
       <Header onChange={(e) => {}} />
       <UserProfile
         name={dataToDisplay.name}

@@ -17,7 +17,7 @@ export function User(props: UserProps) {
       <h1 className="result__name">{props.name}</h1>
       <p className="result__user-name">{props.userName}</p>
       <p className="result__about-me">{props.description}</p>
-      <p className="result-bottom">{props.place}</p>
+      <p className="result-bottom result__observers">{props.place}</p>
       </div>
       </div>
     </div>
