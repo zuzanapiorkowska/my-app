@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IRepository, IUser } from "../interfaces/GitHubData";
 import { Header } from "../components/Header/Header";
 import { Results } from "../components/Results/Results";
@@ -47,22 +47,21 @@ function HomePage() {
     }
   ]);
 
-  async function getGitHubUserData(
-    query: string
-  ): Promise<Array<IRepository | IUser>> {
-    const response = await axios.get(`http://localhost:3000/api/search?search=${query}`);
-    const githubData: Array<IRepository | IUser> = response.data;
-    return githubData;
-  }
+  const [query, setQuery] = useState<string>("")
 
-  async function handleChange(query: string): Promise<void> {
-    const data = (await getGitHubUserData(query)) as Array<IRepository>;
-    setDataToDisplay(data);
+  useEffect(()=> {getGitHubData(query)}, [query])
+  //musi tu być w curly brackets, bo jak nie to się zreturnuje, a tutaj nie ma żadnego returnowania przecie!
+
+  async function getGitHubData(query:string) {
+    if (query==="") return;
+    const response = await axios.get(`http://localhost:3000/api/search?search=${query}`);
+    const gitHubData: Array<IRepository | IUser> = response.data;
+    setDataToDisplay(gitHubData);
   }
 
   return (
     <>
-      <Header onChange={(e) => handleChange(e)} />
+      <Header onChange={(e) => setQuery(e)} />
       <Results dataToDisplay={dataToDisplay} />
     </>
   );
