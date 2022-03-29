@@ -11,7 +11,7 @@ function UserPage() {
   const user = router.query.user as unknown as string;
   async function getGitHubUserData(): Promise<IUserPresentation> {
     const response = await axios.get(
-      `http://localhost:3000/api/search?search=${user}`
+      `http://localhost:3000/api/users/${user}`
     );
     console.log(response);
     const githubData: IUserPresentation = response.data;
@@ -26,16 +26,16 @@ function UserPage() {
     return data;
   }
 
-  // const dataToDisplay = getGitHubUserData();
+  const dataToDisplay = getGitHubUserData();
 
-  const dataToDisplay = {
-    name: user,
-    userName: user,
-    avatarUrl: "/zmalinkiem.jpg",
-    followers: 0,
-    following: 332,
-    stars: 373,
-  };
+  // const dataToDisplay = {
+  //   name: user,
+  //   userName: user,
+  //   avatarUrl: "/zmalinkiem.jpg",
+  //   followers: 0,
+  //   following: 332,
+  //   stars: 373,
+  // };
 
   return (
     <>
