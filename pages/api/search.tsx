@@ -69,6 +69,7 @@ export const mapUserDataToMatchFrontInterface = async (
   return usersArr.map((user) => {
     return {
       name: user.name,
+      userName: user.login,
       avatarUrl: user.avatar_url,
       description: user.bio,
       place: user.location,
