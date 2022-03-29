@@ -12,10 +12,11 @@ let token = process.env.MY_TOKEN;
 
 export const getProperRepos = async (req: NextApiRequest) => {
   const repositories = await axios.get(
-    `https://api.github.com/search/repositories?q=${req.query.search}`,
+    `https://api.github.com/search/repositories`,
     {
+      params: { q: req.query.search },
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     }
   );
@@ -33,34 +34,27 @@ export const getProperRepos = async (req: NextApiRequest) => {
 };
 
 export const getGeneralUser = async (req: NextApiRequest) => {
-  const users = await axios.get(
-    `https://api.github.com/search/users?q=${req.query.search}`,
+  const users = await axios.get(`https://api.github.com/search/users`, {
+    params: { q: req.query.search },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const dataUsers = (await users.data.items) as UserType[];
+  return dataUsers;
+};
+
+export const getMoreUserData = async (userLogin: string) => {
+  const accurateUserData = await axios.get(
+    `https://api.github.com/users/${userLogin}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
-  const dataUsers = (await users.data.items) as UserType[];
-  return dataUsers;
-};
-
-export const getMoreUserData = async (usersArr: UserType[]) => {
-  let newArr = [];
-
-  for (const user of usersArr) {
-    const accurateUserData = await axios.get(
-      `https://api.github.com/users/${user.login}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    let accurateRespData = (await accurateUserData.data) as SpecificUserType;
-    newArr.push(accurateRespData);
-  }
-  return newArr;
+  let accurateRespData = (await accurateUserData.data) as SpecificUserType;
+  return accurateRespData;
 };
 
 export const mapUserDataToMatchFrontInterface = async (
@@ -77,12 +71,39 @@ export const mapUserDataToMatchFrontInterface = async (
   });
 };
 
+// const searchResultUsers: IUser[] = await Promise.all(
+//   githubUsers.items.map(async (ghUser) => {
+//     const userProfile = await this.client.getUser(ghUser.login);
+//     return {
+//       name: userProfile.name,
+//       id: userProfile.id,
+//       username: userProfile.login,
+//       avatar: userProfile.avatar_url,
+//       location: userProfile.location,
+//       type: SearchResultType.User,
+//     };
+//   })
+// );
+
 const getData = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const repositories = await getProperRepos(req);
   const generalUserData = await getGeneralUser(req);
-  const allUserData = await getMoreUserData(generalUserData);
-  const users = await mapUserDataToMatchFrontInterface(allUserData);
 
-  res.status(200).json([...repositories, ...users]);
+  const searchResultUsers: IUser[] = await Promise.all(
+    generalUserData.map(async (githubUser) => {
+      const userProfile = await getMoreUserData(githubUser.login);
+      return {
+        name: userProfile.name,
+        userName: userProfile.login,
+        avatarUrl: userProfile.avatar_url,
+        description: userProfile.bio,
+        place: userProfile.location,
+      } as IUser;
+    })
+  );
+  // const allUserData = await getMoreUserData(generalUserData);
+  // const users = await mapUserDataToMatchFrontInterface(allUserData);
+
+  res.status(200).json([...repositories, searchResultUsers]);
 };
 export default getData;
