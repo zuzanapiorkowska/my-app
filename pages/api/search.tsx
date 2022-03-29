@@ -15,7 +15,7 @@ export const getProperRepos = async (req: NextApiRequest) => {
     `https://api.github.com/search/repositories?q=${req.query.search}`,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
     }
   );
